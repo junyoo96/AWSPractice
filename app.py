@@ -19,8 +19,20 @@ def json_test():
 @app.route('/dbtest')
 def db_test():
 	con=cx_Oracle.connect('scott/12345678@oracle11gr2.cdubaygxhxxb.ap-northeast-2.rds.amazonaws.com:1521/orcl')
-	print (con.version)
+	#aa=con.version
+	#con.close()	
+	db=con.cursor()
+	db.execute('SELECT NAME FROM V$DATABASE')	
+	
+	bb="aa"
+
+	for record in db:
+		bb=db	
+	
+	db.close()
 	con.close()	
+
+	return bb
 
 if __name__=='__main__':
 	app.run(host='0.0.0.0',port='5000')
