@@ -1,4 +1,4 @@
-from flask import Flask
+ufrom flask import Flask
 from flask import jsonify
 
 #Oracle
@@ -22,20 +22,17 @@ def db_test():
 	#aa=con.version
 	#con.close()	
 	db=con.cursor()
-	db.execute('SELECT NAME FROM NODE')	
+	db.execute('SELECT NAME FROM V$DATABASE')	
 	
-	#bb=""
+	bb="aa"
 
 	for record in db:
-		#print(record)	
-		aa=record
-
-	print (aa)
-
+		bb=db	
+	
 	db.close()
 	con.close()	
 
-	return 'aa'
+	return bb
 
 if __name__=='__main__':
-	app.run(host='0.0.0.0',port='5000',debug='True')
+	app.run(host='0.0.0.0',port='5000')
